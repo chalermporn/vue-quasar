@@ -1,6 +1,6 @@
 <template>
   <q-layout view="hhh Lpr lff" class="bg-grey-1">
-    <!-- <q-header reveal elevated class="bg-white text-grey-8" height-hint="98"> -->
+
     <q-header reveal elevated class="bg-white text-grey-8" height-hint="64">
       <q-toolbar class="GNL__toolbar">
         <q-btn
