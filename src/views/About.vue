@@ -1,6 +1,6 @@
 <template>
-  <div>
+  <q-page>
     <h1>This is an about page</h1>
     <p>sdfsd</p>
-  </div>
+  </q-page>
 </template>
