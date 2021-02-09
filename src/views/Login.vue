@@ -25,20 +25,6 @@
               <span class="text-h6">NPA Management System </span>
             </p>
           </div>
-          <!-- <div style="padding-top:290px;text-align: left;padding-left:20px;">
-            <p style="padding-top: 1%" class="text-body2">
-              <b>ระบบบริหารทรัพย์สินพร้อมขาย :</b>
-            </p>
-            <span>
-              เพื่อให้การบริหารจัดการข้อมูลหลักประกัน เป็นไปอย่างมีประสิทธิภาพ </span
-            ><br />
-            <span>
-              ท่านสามารถเข้าระบบเพื่อทำการบันทึก ปรับปรุง
-              หรือเรียกดูข้อมูลหลักประกัน
-            </span>
-            <br />
-            <span> ด้วยรหัสพนักงานตามสิทธิ์ (Authorize) ของท่าน<br /> </span>
-          </div> -->
         </div>
       </q-img>
     </q-drawer>
@@ -59,13 +45,6 @@
 
       <br />
       <br />
-      <!-- banner -->
-      <!-- border-style: solid; -->
-      <!-- <div
-        class="row"
-        style="padding-top:10px;padding-bottom:50px;padding-left:20px;width: 100%; border-style: solid;"
-
-      > -->
       <div
         class="row justify-center items-center"
         style="
@@ -189,10 +168,7 @@ export default {
       this.realDateTime = this.getRealDateTime()
     }, 1000)
   },
-  created() {
-    console.log('call logout >>>>>>>>>>>>>>>>> ')
-    this.logout()
-  },
+
   methods: {
     getRealDateTime() {
       const mt = moment()
@@ -201,40 +177,11 @@ export default {
       const year = mt.format('YYYY')
       return day.replace(year, ' พ.ศ. ' + (parseInt(year) + 543)) + ' น. '
     },
-    notifyNegativeAlert(code, message) {
-      this.$q.notify({
-        type: 'negative',
-        message: message
-      })
-    },
-    async authen() {
-      this.$q.loading.show()
-      await this.$store
-        .dispatch('authenticate/login', {
-          username: this.username,
-          password: this.password
-        })
-        .then(() => {
-          this.$q.loading.hide()
-          const data = this.$store.state.authenticate.authToken
-          if (data !== null && data !== '') {
-            localStorage.setItem('token', data.token)
-            this.$store.commit('authenticate/setAuthToken', data.token)
-            // console.log('axios.defaults.headers.common > ' + JSON.stringify(axios.defaults.headers.common))
-            // axios.defaults.headers.common.Authorization = 'Bearer ' + data.token
-            this.$router.replace('/authenticateRole')
-          }
-        })
-        .catch((e) => {
-          this.$q.loading.hide()
-          this.notifyNegativeAlert('Error', 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง')
-        })
+    authen() {
+      this.$router.push({ name: 'Home' })
     },
     async logout() {
-      // await this.$store.dispatch('login/logout')
-      localStorage.removeItem('token')
-      localStorage.removeItem('currentRole')
-      localStorage.clear()
+
     }
   }
 }

@@ -1,10 +1,11 @@
 <template>
-  <div class="app">
+  <div>
     <RouterView />
   </div>
 </template>
 
 <script>
 export default {
+  name: 'LoginLayout'
 }
 </script>
